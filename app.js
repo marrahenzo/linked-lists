@@ -11,6 +11,14 @@ class LinkedList {
       next.nextNode = new Node(value);
     }
   }
+
+  prepend(value) {
+    if (this.head.value === null) this.head = new Node(value);
+    else {
+      let node = new Node(value, this.head);
+      this.head = node;
+    }
+  }
 }
 
 class Node {
@@ -23,8 +31,7 @@ class Node {
 let list = new LinkedList();
 
 list.append(45);
-list.append(41);
-list.append(47);
 list.append(69);
+list.prepend(1);
 
-console.log(list);
+console.log(list.head);
