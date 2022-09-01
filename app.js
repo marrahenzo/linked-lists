@@ -76,6 +76,18 @@ class LinkedList {
     }
     return valueExists;
   }
+
+  find(value) {
+    let next = this._head;
+    let index = 0;
+    if (this._head.value === value) return index;
+    while (next.nextNode) {
+      next = next.nextNode;
+      index++;
+      if (next.value === value) return index;
+    }
+    return null;
+  }
 }
 
 class Node {
@@ -91,4 +103,4 @@ list.append(45);
 list.append(69);
 list.prepend(1);
 
-console.log(list.contains(1));
+console.log(list.find(1));
