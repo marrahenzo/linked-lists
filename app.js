@@ -55,6 +55,16 @@ class LinkedList {
     }
     return null;
   }
+
+  pop() {
+    let next = this._head;
+    let previous = null;
+    while (next.nextNode) {
+      previous = next;
+      next = next.nextNode;
+    }
+    previous.nextNode = null;
+  }
 }
 
 class Node {
@@ -69,5 +79,6 @@ let list = new LinkedList();
 list.append(45);
 list.append(69);
 list.prepend(1);
+list.pop();
 
-console.log(list.at(0));
+console.log(list._head);
