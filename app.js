@@ -26,7 +26,6 @@ class LinkedList {
     if (next.value) size++;
     while (next.nextNode) {
       size++;
-      console.log(next);
       next = next.nextNode;
     }
     return size;
@@ -101,6 +100,44 @@ class LinkedList {
     string += 'null';
     return string;
   }
+
+  insertAt(value, index) {
+    if (index === 0) this.prepend(value);
+    let counter = 0;
+    let current = this._head;
+    let previous = null;
+    while (current.nextNode) {
+      previous = current;
+      current = current.nextNode;
+      counter++;
+      if (counter === index) {
+        let newNode = new Node(value, current);
+        previous.nextNode = newNode;
+        return newNode;
+      }
+    }
+    return null;
+  }
+
+  removeAt(index) {
+    if (index === this.size() - 1) this.pop();
+    let current = this._head;
+    let previous = null;
+    let counter = 0;
+    if (counter === index) {
+      if (current.nextNode) {
+        this._head = current.nextNode;
+      } else return null;
+    }
+    while (current.nextNode) {
+      previous = current;
+      current = current.nextNode;
+      counter++;
+      if (counter === index) {
+        previous.nextNode = current.nextNode;
+      }
+    }
+  }
 }
 
 class Node {
@@ -117,5 +154,7 @@ list.append(69);
 list.prepend(1);
 list.append('hola');
 list.prepend('juancho');
+list.insertAt(99, 3);
+list.removeAt(2);
 
 console.log(list.toString());
