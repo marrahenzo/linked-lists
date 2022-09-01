@@ -88,6 +88,19 @@ class LinkedList {
     }
     return null;
   }
+
+  toString() {
+    let string = '';
+    if (this._head.value !== null) {
+      let next = this._head;
+      while (next) {
+        string += `(${next.value}) -> `;
+        next = next.nextNode;
+      }
+    }
+    string += 'null';
+    return string;
+  }
 }
 
 class Node {
@@ -102,5 +115,7 @@ let list = new LinkedList();
 list.append(45);
 list.append(69);
 list.prepend(1);
+list.append('hola');
+list.prepend('juancho');
 
-console.log(list.find(1));
+console.log(list.toString());
