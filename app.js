@@ -43,6 +43,18 @@ class LinkedList {
     }
     return next;
   }
+
+  at(index) {
+    let next = this._head;
+    let counter = 0;
+    while (counter <= index) {
+      if (counter === index) return next;
+      if (!next.nextNode) break;
+      next = next.nextNode;
+      counter++;
+    }
+    return null;
+  }
 }
 
 class Node {
@@ -58,4 +70,4 @@ list.append(45);
 list.append(69);
 list.prepend(1);
 
-console.log(list.tail());
+console.log(list.at(0));
