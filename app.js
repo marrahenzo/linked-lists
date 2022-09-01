@@ -65,6 +65,17 @@ class LinkedList {
     }
     previous.nextNode = null;
   }
+
+  contains(value) {
+    let next = this._head;
+    let valueExists = false;
+    if (next.value === value) valueExists = true;
+    while (next.nextNode && !valueExists) {
+      next = next.nextNode;
+      if (next.value === value) valueExists = true;
+    }
+    return valueExists;
+  }
 }
 
 class Node {
@@ -79,6 +90,5 @@ let list = new LinkedList();
 list.append(45);
 list.append(69);
 list.prepend(1);
-list.pop();
 
-console.log(list._head);
+console.log(list.contains(1));
